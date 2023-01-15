@@ -11,7 +11,7 @@
 | first_name         | string              | null: false               |
 | last_name_kana     | string              | null: false               |
 | first_name_kana    | string              | null: false               |
-| birth_date         | string              | null: false               |
+| birth_date         | date                | null: false               |
 
 ### Association
 
@@ -25,18 +25,17 @@
 | title                               | string     | null: false                    |
 | category                            | string     | null: false                    |
 | text                                | text       | null: false                    |
-| image                               | references | null: false, foreign_key: true |
-| condition                           | string     | null: false                    |
-| delivery_charge                     | string     | null: false                    |
-| sender_area                         | string     | null: false                    |
-| delivery_time                       | string     | null: false                    |
-| price                               | string     | null: false                    |
+| condition_id                        | integer    | null: false                    |
+| delivery_charge_id                  | integer    | null: false                    |
+| prefecture_id                       | integer    | null: false                    |
+| delivery_time_id                    | integer    | null: false                    |
+| price                               | integer    | null: false                    |
 | user                                | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :buys
+- has_one :buy
 
 ## buys table
 
@@ -47,20 +46,18 @@
 
 ### Association
 
-- belongs_to :prototype
+- belongs_to :item
 - belongs_to :user
 
 ## addresss table
 
 | Column        | Type       | Options                        |
 |-------------- |------------|--------------------------------|
-| postal_code   | string     | null: false, foreign_key: true |
-| prefecture    | string     | null: false, foreign_key: true |
+| postal_code   | string     | null: false,                   |
+| prefecture    | string     | null: false,                   |
 | municipality  | string     | null: false,                   |
 | house_number  | string     | null: false,                   |
 | building_name | string     |                                |
 | tel           | string     | null: false,                   |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
 
 - belongs_to :buy
